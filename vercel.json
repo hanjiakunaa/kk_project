@@ -1,15 +1,15 @@
 {
   "rewrites": [
     {
-      "source": "/api/:match*",
+      "source": "/api/(.*)",
       "destination": "/api/proxy"
     },
     {
-      "source": "/kuleu/:match*",
+      "source": "/kuleu/(.*)",
       "destination": "/kuleu/proxy"
     },
     {
-      "source": "/pexelsPicAndVideo/:match*",
+      "source": "/pexelsPicAndVideo/(.*)",
       "destination": "/pexelsPicAndVideo/proxy"
     }
   ]
