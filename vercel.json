@@ -1,17 +1,8 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/$1" },
     {
       "source": "/api/(.*)",
       "destination": "/api/proxy"
-    },
-    {
-      "source": "/kuleu/(.*)",
-      "destination": "/kuleu/proxy"
-    },
-    {
-      "source": "/pexelsPicAndVideo/(.*)",
-      "destination": "/pexelsPicAndVideo/proxy"
     }
   ]
 }
