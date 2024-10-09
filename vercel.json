@@ -2,7 +2,15 @@
   "rewrites": [
     {
       "source": "/api/:match*",
-      "destination": "http://your-api-url.com/:match*"
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/kuleu/:match*",
+      "destination": "/kuleu/proxy"
+    },
+    {
+      "source": "/pexelsPicAndVideo/:match*",
+      "destination": "/pexelsPicAndVideo/proxy"
     }
   ]
 }
