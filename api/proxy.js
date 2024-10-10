@@ -38,7 +38,6 @@ module.exports = (req, res) => {
     changeOrigin: true,
     pathRewrite: {
       // 根据不同的路径前缀重写路径
-
       '^/kuleu/': '/',
     },
     // 可选：添加日志或其他中间件选项

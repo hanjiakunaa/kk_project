@@ -5,9 +5,7 @@
   <div class="navbar">
     <div class="navbar-wrapper">
       <div class="header-logo">
-        <!-- <h-icon name="pi-sandslash-alola-shiny" scale="2.5" hover="true" animation="ring" /> -->
         <h-icon name="pi-gastly" :scale="2.5" :hover="true" animation="ring" speed="slow" />
-
       </div>
       <div class="header-menu">我是菜单</div>
       <div class="header-login">

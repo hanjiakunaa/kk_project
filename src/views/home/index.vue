@@ -8,7 +8,6 @@
     getSelectedVideo,
     getVideoDetail,
   } from '@/api/test';
-
   const router = useRouter();
   const onClick = (path: string) => {
     router.push({ path });
@@ -67,11 +66,8 @@
       <li @click="onClick('mine')">我的</li>
     </ul>
     <div class="app-content flex-center">123</div>
+    <img src="@/assets/1.jpg" alt="" />
     <div v-for="item in 100" :key="item">{{ item }}+想想干什么</div>
   </div>
 </template>
-<style lang="scss">
-  .home {
-    height: 1000px;
-  }
-</style>
+<style lang="scss"></style>

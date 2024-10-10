@@ -8,7 +8,7 @@ export const basicRoutes = [
     children: [
       {
         path: '/',
-        name: 'Home',
+        name: 'home',
         component: () => import('@/views/home/index.vue'),
         meta: {
           title: '首页',

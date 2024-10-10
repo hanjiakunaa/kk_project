@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import LayoutHeader from './components/LayoutHeader.vue';
-  import LayoutFooter from './components/LayoutFooter.vue';
+  // import LayoutFooter from './components/LayoutFooter.vue';
 </script>
 <template>
   <div class="common-layout">
@@ -8,6 +8,6 @@
     <main class="common-layout__content">
       <router-view />
     </main>
-    <LayoutFooter />
+    <!-- <LayoutFooter /> -->
   </div>
 </template>
