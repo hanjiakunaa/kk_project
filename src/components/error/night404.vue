@@ -1,7 +1,7 @@
 <template>
   <div class="error-container container-star">
-    <div v-for="(item, index) in 30" :key="index" class="star-1"></div>
-    <div v-for="(item, index) in 30" :key="index" class="star-2"></div>
+    <div v-for="(item, index) in 30" :key="item + index" class="star-1"></div>
+    <div v-for="(item, index) in 30" :key="item + index" class="star-2"></div>
   </div>
   <div class="error-container container-bird">
     <div class="bird bird-anim" v-for="(item, index) in 6" :key="index">
