@@ -2,11 +2,12 @@ import Layout from '@/layout/Index.vue';
 export const basicRoutes = [
   {
     path: '/',
-    redirect: '/home',
+    redirect: '/',
     component: Layout,
+    alias: '/home',
     children: [
       {
-        path: '/home',
+        path: '/',
         name: 'Home',
         component: () => import('@/views/home/index.vue'),
         meta: {
