@@ -23,4 +23,11 @@ export const basicRoutes = [
       },
     ],
   },
+  {
+    // 404
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    meta: { title: '错误页面' },
+    component: () => import('@/layout/NotFound.vue'),
+  },
 ];

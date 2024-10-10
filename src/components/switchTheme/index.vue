@@ -1,26 +1,37 @@
 <script setup lang="ts">
+  import { onMounted, ref } from 'vue';
   import { useAppStore } from '@/store/modules/app';
+  import { Local } from '@/utils/storage';
   const appStore = useAppStore();
+  let checkFlag = ref(false);
   const onChangeCheck = (e: any) => {
     appStore.setTheme(e.target.checked ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', appStore.theme);
   };
+  onMounted(() => {
+    const appStorage = Local.get('app');
+    if (appStorage && appStorage.theme) {
+      checkFlag.value = appStorage.theme == 'dark' ? true : false;
+      document.documentElement.setAttribute('data-theme', appStore.theme);
+    }
+  });
 </script>
 <template>
   <div class="switch-theme__container">
     <label class="switch">
-      <input class="cb" type="checkbox" @change="onChangeCheck" />
+      <input class="cb" type="checkbox" @change="onChangeCheck" v-model="checkFlag" />
       <span class="toggle">
-        <span class="left">off</span>
-        <span class="right">on</span>
+        <span class="left">
+          <h-icon name="bi-emoji-sunglasses" />
+        </span>
+        <span class="right">
+          <h-icon name="bi-emoji-sunglasses-fill" />
+        </span>
       </span>
     </label>
   </div>
 </template>
 <style scoped lang="scss">
-  /* From Uiverse.io by vinodjangid07 */
-  /* From Uiverse.io by r7chardgh */
-  /* The switch - the box around the slider */
   .switch {
     font-size: 13px;
     position: relative;
@@ -31,14 +42,12 @@
     border-radius: 10px;
   }
 
-  /* Hide default HTML checkbox */
   .switch .cb {
     opacity: 0;
     width: 0;
     height: 0;
   }
 
-  /* The slider */
   .toggle {
     position: absolute;
     cursor: pointer;
@@ -101,7 +110,7 @@
     width: 50%;
     height: 88%;
     background-color: #f3f3f3;
-    color: rgb(206, 206, 206);
+    color: var(--text-color);
     right: 1px;
     bottom: 0;
     align-items: center;

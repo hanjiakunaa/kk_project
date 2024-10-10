@@ -4,7 +4,11 @@
 <template>
   <div class="navbar">
     <div class="navbar-wrapper">
-      <div class="header-logo">我是logo</div>
+      <div class="header-logo">
+        <!-- <h-icon name="pi-sandslash-alola-shiny" scale="2.5" hover="true" animation="ring" /> -->
+        <h-icon name="pi-gastly" :scale="2.5" :hover="true" animation="ring" speed="slow" />
+
+      </div>
       <div class="header-menu">我是菜单</div>
       <div class="header-login">
         <switchTheme />
@@ -37,7 +41,7 @@
     top: 0;
   }
   .header-logo {
-    font-size: 20px;
+    margin-right: 30px;
   }
   .header-menu {
     font-size: 20px;
@@ -47,6 +51,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    line-height: 42px;
+    margin-left: 20px;
   }
 </style>
