@@ -7,7 +7,7 @@ import {
 } from 'oh-vue-icons/icons';
 addIcons(BiEmojiSunglasses, BiEmojiSunglassesFill, PiSandslashAlolaShiny, PiGastly);
 export const conponentIconPlugins = {
-  install: (app) => {
+  install: (app: any) => {
     app.component('h-icon', OhVueIcon);
   },
 };
