@@ -1,7 +1,7 @@
 import { defineConfig, normalizePath, loadEnv, UserConfig, ConfigEnv } from 'vite';
 import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
-import { createProxy } from './build/vite/proxy';
+// import { createProxy } from './build/vite/proxy';
 import { wrapperEnv } from './build/utils';
 import { createVitePlugins } from './build/vite/plugin';
 import { OUTPUT_DIR } from './build/constant';
@@ -15,8 +15,9 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
 
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE, VITE_SERVE_WWW } = viteEnv;
-
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE } = viteEnv;
+  // VITE_PROXY
+  // VITE_SERVE_WWW
   const isBuild = command === 'build';
 
   return {
