@@ -4,7 +4,7 @@
     <div v-for="(item, index) in 30" :key="item + index" class="star-2"></div>
   </div>
   <div class="error-container container-bird">
-    <div class="bird bird-anim" v-for="(item, index) in 6" :key="index">
+    <div class="bird bird-anim" v-for="(item, index) in 6" :key="item + index">
       <div class="bird-container">
         <div class="wing wing-left">
           <div class="wing-left-top"></div>
