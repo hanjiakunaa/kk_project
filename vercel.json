@@ -3,20 +3,18 @@
     {
       "source": "/:path*",
       "destination": "/index.html"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/proxy",
-      "dest": "/api/proxy.js"
     },
     {
-      "src": "/api/proxy1",
-      "dest": "/api/proxy1.js"
+      "source": "/api/(.*)",
+      "destination": "/api/proxy"
     },
     {
-      "src": "/api/proxy2",
-      "dest": "/api/proxy2.js"
+      "source": "/api/(.*)",
+      "destination": "/api/proxy1"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/proxy2"
     }
   ]
 }
