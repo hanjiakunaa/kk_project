@@ -1,16 +1,16 @@
-<script setup lang="ts">
+<script setup>
   import { onMounted, ref } from 'vue';
   import { useAppStore } from '@/store/modules/app';
   import { Local } from '@/utils/storage';
   const appStore = useAppStore();
   let checkFlag = ref(false);
-  const onChangeCheck = (e: any) => {
+  const onChangeCheck = (e) => {
     appStore.setTheme(e.target.checked ? 'dark' : 'light');
     let transitions = document.startViewTransition(() => {
       document.documentElement.setAttribute('data-theme', appStore.theme);
     });
 
-    // 等待伪元素创建完成：
+    // 等待伪元素创建完成：1111111
     transitions.ready.then(() => {
       const width = window.innerWidth;
       const height = window.innerHeight;
