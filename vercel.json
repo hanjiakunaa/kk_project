@@ -6,7 +6,7 @@
     },
     {
       "source": "/api/(.*)",
-      "destination": "/api/proxy"
+      "destination": "https://v1.hitokoto.cn/$1"
     },
     {
       "source": "/api/(.*)",
