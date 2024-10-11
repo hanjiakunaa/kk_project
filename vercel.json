@@ -5,15 +5,15 @@
       "destination": "/index.html"
     },
     {
-      "source": "/api/(.*)",
+      "source": "/api/api/(.*)",
       "destination": "https://v1.hitokoto.cn/$1"
     },
     {
-      "source": "/kuleu/(.*)",
+      "source": "/api/kuleu/(.*)",
       "destination": "https://api.kuleu.com/api/$1"
     },
     {
-      "source": "/pexelsPicAndVideo/(.*)",
+      "source": "/api/pexelsPicAndVideo/(.*)",
       "destination": "https://api.pexels.com/$1"
     }
   ]
