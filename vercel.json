@@ -9,12 +9,12 @@
       "destination": "https://v1.hitokoto.cn/$1"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "/api/proxy1"
+      "source": "/kuleu/(.*)",
+      "destination": "https://api.kuleu.com/api/$1"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "/api/proxy2"
+      "source": "/pexelsPicAndVideo/(.*)",
+      "destination": "https://api.pexels.com/$1"
     }
   ]
 }

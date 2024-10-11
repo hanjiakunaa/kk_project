@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { useRouter } from 'vue-router';
   import {
+    getWord,
     getSearchPhotos,
     getSelectedPhotos,
     getPhotoDetail,
@@ -11,6 +12,11 @@
   const router = useRouter();
   const onClick = (path: string) => {
     router.push({ path });
+  };
+  const getWordData = () => {
+    getWord({ type: 'json' }).then((res) => {
+      console.log('获取单词', res);
+    });
   };
   // 获取图片
   const getPhotos = () => {
@@ -49,6 +55,8 @@
     });
   };
   onMounted(() => {
+    getWordData();
+    // 图片
     getPhotos();
     getSelected();
     getDetail();
