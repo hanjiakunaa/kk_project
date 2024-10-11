@@ -6,7 +6,32 @@
   let checkFlag = ref(false);
   const onChangeCheck = (e: any) => {
     appStore.setTheme(e.target.checked ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', appStore.theme);
+    let transitions = document.startViewTransition(() => {
+      document.documentElement.setAttribute('data-theme', appStore.theme);
+    });
+
+    // 等待伪元素创建完成：
+    transitions.ready.then(() => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const buffer = width * 0.1;
+      const clipPaths = [
+        `path('M ${-width} 0 L 0,0 L ${-buffer},${height} L ${-width - buffer * 2},${height}')`,
+        `path('M 0 0 L ${width + buffer},0 L ${width},${height} L ${-buffer},${height}')`,
+      ];
+      document.documentElement.animate(
+        {
+          clipPath: e.target.checked ? clipPaths.reverse() : clipPaths,
+        },
+        {
+          duration: 500,
+          easing: 'linear',
+          pseudoElement: e.target.checked
+            ? '::view-transition-old(root)'
+            : '::view-transition-new(root)',
+        }
+      );
+    });
   };
   onMounted(() => {
     const appStorage = Local.get('app');

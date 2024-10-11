@@ -1,7 +1,7 @@
 import { defineConfig, normalizePath, loadEnv, UserConfig, ConfigEnv } from 'vite';
 import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
-// import { createProxy } from './build/vite/proxy';
+import { createProxy } from './build/vite/proxy';
 import { wrapperEnv } from './build/utils';
 import { createVitePlugins } from './build/vite/plugin';
 import { OUTPUT_DIR } from './build/constant';
@@ -15,9 +15,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
 
-  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE } = viteEnv;
-  // VITE_PROXY
-  // VITE_SERVE_WWW
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_DROP_CONSOLE, VITE_PROXY, VITE_SERVE_WWW } = viteEnv;
   const isBuild = command === 'build';
 
   return {
@@ -29,24 +27,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       port: VITE_PORT,
       open: true,
       // Load proxy configuration from .env
-      // proxy: createProxy(VITE_PROXY, VITE_SERVE_WWW),
-      proxy: {
-        '/api': {
-          target: 'https://v1.hitokoto.cn',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-        },
-        '/kuleu': {
-          target: 'https://api.kuleu.com/api/',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/kuleu/, ''),
-        },
-        '/pexelsPicAndVideo': {
-          target: 'https://api.pexels.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/pexelsPicAndVideo/, ''),
-        },
-      },
+      proxy: createProxy(VITE_PROXY, VITE_SERVE_WWW),
     },
     esbuild: {
       pure: VITE_DROP_CONSOLE ? ['console.log', 'debugger'] : [],
