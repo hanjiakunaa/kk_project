@@ -10,7 +10,7 @@
       document.documentElement.setAttribute('data-theme', appStore.theme);
     });
 
-    // 等待伪元素创建完成：1111111
+    // 等待伪元素创建完成：1111111asdsadsadasdsadasdsadasd1111111
     transitions.ready.then(() => {
       const width = window.innerWidth;
       const height = window.innerHeight;
