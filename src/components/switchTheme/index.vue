@@ -6,26 +6,35 @@
   let checkFlag = ref(false);
   const onChangeCheck = (e) => {
     appStore.setTheme(e.target.checked ? 'dark' : 'light');
+    if (document.startViewTransition === undefined) {
+      console.log('document.startViewTransition is undefined');
+    }
+
+    const x = e.clientX;
+    const y = e.clientY;
+    // 计算圆的半径
+    const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
     let transitions = document.startViewTransition(() => {
       document.documentElement.setAttribute('data-theme', appStore.theme);
     });
 
     // 等待伪元素创建完成：https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent
     transitions.ready.then(() => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const buffer = width * 0.1;
-      const clipPaths = [
-        `path('M ${-width} 0 L 0,0 L ${-buffer},${height} L ${-width - buffer * 2},${height}')`,
-        `path('M 0 0 L ${width + buffer},0 L ${width},${height} L ${-buffer},${height}')`,
-      ];
+      // const width = window.innerWidth;
+      // const height = window.innerHeight;
+      // const buffer = width * 0.1;
+      // const clipPaths = [
+      //   `path('M ${-width} 0 L 0,0 L ${-buffer},${height} L ${-width - buffer * 2},${height}')`,
+      //   `path('M 0 0 L ${width + buffer},0 L ${width},${height} L ${-buffer},${height}')`,
+      // ];
+      const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`];
       document.documentElement.animate(
         {
-          clipPath: e.target.checked ? clipPaths.reverse() : clipPaths,
+          clipPath: e.target.checked ? [...clipPath].reverse() : clipPath,
         },
         {
           duration: 500,
-          easing: 'linear',
+          easing: 'ease-in',
           pseudoElement: e.target.checked
             ? '::view-transition-old(root)'
             : '::view-transition-new(root)',
@@ -44,7 +53,7 @@
 <template>
   <div class="switch-theme__container">
     <label class="switch">
-      <input class="cb" type="checkbox" @change="onChangeCheck" v-model="checkFlag" />
+      <input class="cb" type="checkbox" @click="onChangeCheck($event)" v-model="checkFlag" />
       <span class="toggle">
         <span class="left">
           <h-icon name="bi-emoji-sunglasses" />

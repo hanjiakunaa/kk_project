@@ -9,6 +9,9 @@
       </div>
       <div class="header-menu">我是菜单</div>
       <div class="header-login">
+        <div class="header-lock">
+          <h-icon name="ri-lock-fill" fill="red" :scale="1.8" animation="pulse" />
+        </div>
         <switchTheme />
       </div>
     </div>
@@ -48,6 +51,7 @@
   .header-login {
     height: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     line-height: 42px;
     margin-left: 20px;
